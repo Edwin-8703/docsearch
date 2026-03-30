@@ -1,0 +1,37 @@
+{% extends "documents/base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<h2>Search Documents</h2>
+
+<form method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search documents..." autofocus>
+    <button type="submit">Search</button>
+</form>
+
+{% if query %}
+    <p>{{ count }} result(s) for "<strong>{{ query }}</strong>"</p>
+    <hr>
+
+    {% if results %}
+        {% for doc in results %}
+        <div style="margin-bottom: 20px;">
+            <strong><a href="{% url 'detail' doc.pk %}">{{ doc.title }}</a></strong>
+            <small> — {{ doc.doc_type|upper }} | {{ doc.uploaded_by }} | {{ doc.uploaded_at|date:"d M Y" }}</small>
+            <p>{{ doc.headline|safe }}</p>
+            <small>
+           <td>
+    <a href="{% url 'preview' doc.pk %}" target="_blank" style="margin-right: 25px;"><strong>Preview</strong></a>
+</td>
+<td>
+    <a href="{% url 'download' doc.pk %}?format=original"style="margin-right: 25px;"><strong>Download</strong></a>
+</td>
+
+            </small>
+        </div>
+        <hr>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

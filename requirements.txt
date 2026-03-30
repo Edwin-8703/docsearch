@@ -1,0 +1,9 @@
+django>=4.2
+psycopg2-binary
+python-docx
+openpyxl
+pdfplumber
+reportlab
+datasets
+whitenoise
+gunicorn

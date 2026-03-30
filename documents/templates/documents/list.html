@@ -1,0 +1,35 @@
+{% extends "documents/base.html" %}
+{% block title %}All Documents{% endblock %}
+{% block content %}
+<h2>All Documents ({{ docs.count }})</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Uploaded By</th>
+            <th>Date</th>
+            <th>Preview</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doc in docs %}
+        <tr>
+            <td><a href="{% url 'detail' doc.pk %}">{{ doc.title|truncatechars:60 }}</a></td>
+            <td>{{ doc.doc_type|upper }}</td>
+            <td>{{ doc.uploaded_by }}</td>
+            <td>{{ doc.uploaded_at|date:"d M Y" }}</td>
+            <td>
+                <a href="{% url 'preview' doc.pk %}" target="_blank">Preview</a>
+            </td>
+            <td>
+                <a href="{% url 'download' doc.pk %}?format=original">Download</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No documents yet. <a href="{% url 'upload' %}">Upload one</a>.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "documents/base.html" %}
+{% block title %}DocSearch - Home{% endblock %}
+{% block content %}
+<h2>DocSearch</h2>
+<p>Total documents in database: <strong>{{ total }}</strong></p>
+<hr>
+<p><strong>Contributor?</strong> <a href="{% url 'upload' %}">Upload a document</a></p>
+<p><strong>Seeker?</strong> <a href="{% url 'search' %}">Search documents</a></p>
+<p><a href="{% url 'document_list' %}">Browse all documents</a></p>
+{% endblock %}

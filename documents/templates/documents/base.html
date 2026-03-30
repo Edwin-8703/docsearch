@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}DocSearch{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        nav { margin-bottom: 30px; }
+        nav a { margin-right: 15px; }
+        mark { background: yellow; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ccc; }
+        input, select, button { padding: 6px; margin: 4px 0; }
+        input[type=text], input[type=file] { width: 100%; box-sizing: border-box; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'upload' %}">Upload (Contributor)</a>
+        <a href="{% url 'search' %}">Search (Seeker)</a>
+        <a href="{% url 'document_list' %}">All Documents</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
