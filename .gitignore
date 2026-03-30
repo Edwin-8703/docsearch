@@ -8,3 +8,4 @@ db.sqlite3
 *.egg-info/
 .DS_Store
 venv/
+docsearch/settings/local.py
