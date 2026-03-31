@@ -33,11 +33,12 @@ class Command(BaseCommand):
 
         try:
             dataset = load_dataset(
-                'ccdv/pubmed-summarization',
-                'document',
-                split='train',
-                trust_remote_code=True
-            )
+           'ccdv/pubmed-summarization',
+           'document',
+            split='train',
+             streaming=True    
+     )
+            
         except Exception as e:
             self.stdout.write(self.style.ERROR(f'Failed to load dataset: {e}'))
             return
