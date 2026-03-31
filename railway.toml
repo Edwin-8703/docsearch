@@ -2,5 +2,5 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py seed_documents --count 500 && gunicorn docsearch.wsgi --bind 0.0.0.0:$PORT --log-file -"
+startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn docsearch.wsgi --bind 0.0.0.0:$PORT --log-file -"
 restartPolicyType = "on_failure"
