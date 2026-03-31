@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn docsearch.wsgi --log-file -
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn docsearch.wsgi --bind 0.0.0.0:$PORT --log-file -
